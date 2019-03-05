@@ -1,0 +1,6 @@
+rootProject.name = 'example'
+
+include ':react-native-pure-file-picker'
+project(':react-native-pure-file-picker').projectDir = new File(rootProject.projectDir,  '../node_modules/react-native-pure-file-picker/android')
+
+include ':app'
