@@ -92,20 +92,14 @@ public class RNTFilePickerModule extends ReactContextBaseJavaModule {
 
                 activity.finish();
 
-                WritableArray array = Arguments.createArray();
+                WritableMap map = Arguments.createMap();
+                PickedFile file = list.get(0);
 
-                for (int i = 0; i < list.size(); i++) {
-                    WritableMap map = Arguments.createMap();
-                    PickedFile file = list.get(i);
+                map.putString("path", file.getPath());
+                map.putString("name", file.getName());
+                map.putInt("size", file.getSize());
 
-                    map.putString("path", file.getPath());
-                    map.putString("name", file.getName());
-                    map.putInt("size", file.getSize());
-
-                    array.pushMap(map);
-                }
-
-                promise.resolve(array);
+                promise.resolve(map);
 
             }
         };

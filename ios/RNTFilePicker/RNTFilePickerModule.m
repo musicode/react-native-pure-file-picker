@@ -11,36 +11,20 @@
 
     self.controller = nil;
     
-    // https://www.jianshu.com/p/607b96ddc757
-    BOOL canAccessingResource = [url startAccessingSecurityScopedResource];
-    if (canAccessingResource) {
-        NSFileCoordinator *fileCoordinator = [[NSFileCoordinator alloc] init];
-        NSError *error;
-        [fileCoordinator coordinateReadingItemAtURL:url options:0 error:&error byAccessor:^(NSURL *newURL) {
-            
-            NSData *data = [NSData dataWithContentsOfURL:newURL];
-            NSInteger size = [data length];
-            
-            NSString *path = newURL.absoluteString;
-            NSString *prefix = @"file://";
-            if ([path hasPrefix:prefix]) {
-                path = [path substringFromIndex:[prefix length]];
-            }
-            
-            self.resolve(@{
-                           @"path": path,
-                           @"name": path.lastPathComponent,
-                           @"size": @(size)
-                           });
-            
-        }];
-        if (error) {
-            // error handing
-        }
-    } else {
-        // startAccessingSecurityScopedResource fail
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    NSInteger size = [data length];
+    
+    NSString *path = url.absoluteString;
+    NSString *prefix = @"file://";
+    if ([path hasPrefix:prefix]) {
+        path = [path substringFromIndex:[prefix length]];
     }
-    [url stopAccessingSecurityScopedResource];
+    
+    self.resolve(@{
+                   @"path": path,
+                   @"name": path.lastPathComponent,
+                   @"size": @(size)
+                   });
 
 }
 
@@ -69,7 +53,7 @@ RCT_EXPORT_METHOD(open:(RCTPromiseResolveBlock) resolve reject:(RCTPromiseReject
                                    @"com.microsoft.powerpoint.pptx"
                                ];
         
-        self.controller = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:documentTypes inMode:UIDocumentPickerModeOpen];
+        self.controller = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:documentTypes inMode:UIDocumentPickerModeImport];
         self.controller.delegate = self;
         
         UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
