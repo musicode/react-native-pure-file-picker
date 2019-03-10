@@ -1,4 +1,3 @@
+import FilePicker from './js/FilePicker'
 
-import { NativeModules } from 'react-native'
-
-export default NativeModules.RNTFilePicker
+export default FilePicker
