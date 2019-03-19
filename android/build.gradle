@@ -1,20 +1,16 @@
-def getExtOrDefault(name) {
-    return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties['ReactNativeFilePicker_' + name]
-}
-
-def getExtOrIntegerDefault(name) {
-    return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties['ReactNativeFilePicker_' + name]).toInteger()
+def safeExtGet(prop, fallback) {
+    rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
 }
 
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion getExtOrIntegerDefault('compileSdkVersion')
-    buildToolsVersion getExtOrDefault('buildToolsVersion')
+    compileSdkVersion safeExtGet('compileSdkVersion', 28)
+    buildToolsVersion safeExtGet('buildToolsVersion', '28.0.3')
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion getExtOrIntegerDefault('targetSdkVersion')
+        minSdkVersion safeExtGet('minSdkVersion', 16)
+        targetSdkVersion safeExtGet('targetSdkVersion', 28)
         versionCode 1
         versionName "1.0"
     }
@@ -24,6 +20,6 @@ android {
 }
 
 dependencies {
-    implementation 'com.facebook.react:react-native:+'
-    implementation 'com.github.herokotlin:FilePicker:0.0.6'
+    implementation "com.facebook.react:react-native:${safeExtGet('reactNativeVersion', '+')}"
+    implementation 'com.github.herokotlin:FilePicker:0.0.8'
 }

@@ -10,6 +10,7 @@ import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.github.herokotlin.filepicker.FilePickerActivity;
 import com.github.herokotlin.filepicker.FilePickerCallback;
@@ -34,7 +35,7 @@ public class RNTFilePickerModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void open(final Promise promise) {
+    public void open(ReadableMap options, final Promise promise) {
 
         FilePickerConfiguration configuration = new FilePickerConfiguration() {
             @Override
@@ -58,6 +59,23 @@ public class RNTFilePickerModule extends ReactContextBaseJavaModule {
 
         configuration.setMaxSelectCount(1);
 
+        if (options.hasKey("cancelButtonTitle")) {
+            configuration.setCancelButtonTitle(options.getString("cancelButtonTitle"));
+        }
+        if (options.hasKey("submitButtonTitle")) {
+            configuration.setSubmitButtonTitle(options.getString("submitButtonTitle"));
+        }
+
+        if (options.hasKey("dateFormatCurrentDate")) {
+            configuration.setDateFormatCurrentDate(options.getString("dateFormatCurrentDate"));
+        }
+        if (options.hasKey("dateFormatCurrentYear")) {
+            configuration.setDateFormatCurrentYear(options.getString("dateFormatCurrentYear"));
+        }
+        if (options.hasKey("dateFormatAnyTime")) {
+            configuration.setDateFormatAnyTime(options.getString("dateFormatAnyTime"));
+        }
+
         FilePickerCallback callback = new FilePickerCallback() {
 
             @Override
@@ -68,17 +86,20 @@ public class RNTFilePickerModule extends ReactContextBaseJavaModule {
 
             @Override
             public void onFetchWithoutExternalStorage(Activity activity) {
-
+                activity.finish();
+                promise.reject("1", "external storage is not available");
             }
 
             @Override
             public void onFetchWithoutPermissions(Activity activity) {
-
+                activity.finish();
+                promise.reject("2", "has no permissions");
             }
 
             @Override
             public void onPermissionsDenied(Activity activity) {
-
+                activity.finish();
+                promise.reject("3", "you denied the requested permissions.");
             }
 
             @Override

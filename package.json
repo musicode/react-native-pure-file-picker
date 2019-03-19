@@ -1,6 +1,6 @@
 {
   "name": "react-native-pure-file-picker",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "react native file picker",
   "main": "index.js",
   "scripts": {
@@ -13,15 +13,13 @@
   "keywords": [
     "react",
     "native",
-    "file picker"
+    "file picker",
+    "doc picker"
   ],
   "author": "musicode",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/musicode/react-native-pure-file-picker/issues"
   },
-  "homepage": "https://github.com/musicode/react-native-pure-file-picker#readme",
-  "dependencies": {
-    "prop-types": "^15.7.2"
-  }
+  "homepage": "https://github.com/musicode/react-native-pure-file-picker#readme"
 }
