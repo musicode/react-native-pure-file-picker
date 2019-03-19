@@ -1,5 +1,4 @@
-#
-react-native-pure-file-picker
+# react-native-pure-file-picker
 
 This is a module which help you pick a document file, such as word, excel, ppt and pdf.
 
@@ -22,10 +21,10 @@ Add `jitpack` in your `android/build.gradle` at the end of repositories:
 
 ```
 allprojects {
-repositories {
-...
-maven { url 'https://jitpack.io' }
-}
+  repositories {
+    ...
+    maven { url 'https://jitpack.io' }
+  }
 }
 ```
 
