@@ -87,21 +87,21 @@ public class RNTFilePickerModule extends ReactContextBaseJavaModule {
             }
 
             @Override
-            public void onExternalStorageNotWritable(@NotNull Activity activity) {
-                activity.finish();
-                promise.reject("1", "external storage is not writable");
-            }
-
-            @Override
             public void onPermissionsNotGranted(@NotNull Activity activity) {
                 activity.finish();
-                promise.reject("2", "has no permissions");
+                promise.reject("1", "has no permissions");
             }
 
             @Override
             public void onPermissionsDenied(@NotNull Activity activity) {
                 activity.finish();
-                promise.reject("3", "you denied the requested permissions.");
+                promise.reject("2", "you denied the requested permissions.");
+            }
+
+            @Override
+            public void onExternalStorageNotWritable(@NotNull Activity activity) {
+                activity.finish();
+                promise.reject("3", "external storage is not writable");
             }
 
             @Override

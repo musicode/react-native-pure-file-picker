@@ -13,7 +13,7 @@ react-native link react-native-pure-file-picker
 
 ### iOS
 
-After `react-native link`, nothing you need to do.
+`Capabilities` -> `iCloud`, check `iCloud Documents`.
 
 ### Android
 
@@ -53,8 +53,8 @@ FilePicker.open({
 .catch(error => {
   let { code } = error
   // -1: click cancel button
-  // 1: external storage is not available
-  // 2: has no permissions
-  // 3: denied the requested permissions
+  // 1: has no permissions
+  // 2: denied the requested permissions
+  // 3: external storage is not writable
 })
 ```
