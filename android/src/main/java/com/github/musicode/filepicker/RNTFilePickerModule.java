@@ -17,6 +17,8 @@ import com.github.herokotlin.filepicker.FilePickerCallback;
 import com.github.herokotlin.filepicker.FilePickerConfiguration;
 import com.github.herokotlin.filepicker.model.PickedFile;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,36 +81,36 @@ public class RNTFilePickerModule extends ReactContextBaseJavaModule {
         FilePickerCallback callback = new FilePickerCallback() {
 
             @Override
-            public void onCancel(Activity activity) {
+            public void onCancel(@NotNull Activity activity) {
                 activity.finish();
                 promise.reject("-1", "cancel");
             }
 
             @Override
-            public void onFetchWithoutExternalStorage(Activity activity) {
+            public void onExternalStorageNotWritable(@NotNull Activity activity) {
                 activity.finish();
-                promise.reject("1", "external storage is not available");
+                promise.reject("1", "external storage is not writable");
             }
 
             @Override
-            public void onFetchWithoutPermissions(Activity activity) {
+            public void onPermissionsNotGranted(@NotNull Activity activity) {
                 activity.finish();
                 promise.reject("2", "has no permissions");
             }
 
             @Override
-            public void onPermissionsDenied(Activity activity) {
+            public void onPermissionsDenied(@NotNull Activity activity) {
                 activity.finish();
                 promise.reject("3", "you denied the requested permissions.");
             }
 
             @Override
-            public void onPermissionsGranted(Activity activity) {
+            public void onPermissionsGranted(@NotNull Activity activity) {
 
             }
 
             @Override
-            public void onSubmit(Activity activity, List<PickedFile> list) {
+            public void onSubmit(@NotNull Activity activity, List<PickedFile> list) {
 
                 activity.finish();
 

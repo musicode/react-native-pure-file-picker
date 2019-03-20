@@ -1,6 +1,6 @@
 {
   "name": "react-native-pure-file-picker",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "react native file picker",
   "main": "index.js",
   "scripts": {
