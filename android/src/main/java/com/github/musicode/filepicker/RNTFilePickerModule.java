@@ -1,9 +1,6 @@
 package com.github.musicode.filepicker;
 
 import android.app.Activity;
-import android.content.pm.PackageManager;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Promise;
@@ -19,7 +16,6 @@ import com.github.herokotlin.filepicker.model.PickedFile;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RNTFilePickerModule extends ReactContextBaseJavaModule {
@@ -40,23 +36,7 @@ public class RNTFilePickerModule extends ReactContextBaseJavaModule {
     public void open(ReadableMap options, final Promise promise) {
 
         FilePickerConfiguration configuration = new FilePickerConfiguration() {
-            @Override
-            public boolean requestPermissions(Activity activity, List<String> permissions, int requestCode) {
-                List<String> list = new ArrayList<>();
 
-                for (String permission: permissions) {
-                    if (ContextCompat.checkSelfPermission(activity, permission) != PackageManager.PERMISSION_GRANTED) {
-                        list.add(permission);
-                    }
-                }
-
-                if (list.size() > 0) {
-                    ActivityCompat.requestPermissions(activity, list.toArray(new String[list.size()]), requestCode);
-                    return false;
-                }
-
-                return true;
-            }
         };
 
         configuration.setMaxSelectCount(1);
