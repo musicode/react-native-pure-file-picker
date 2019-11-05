@@ -6,6 +6,7 @@ This is a module which help you pick a document file, such as word, excel, ppt a
 
 ```
 npm i react-native-pure-file-picker
+// link below 0.60
 react-native link react-native-pure-file-picker
 ```
 
