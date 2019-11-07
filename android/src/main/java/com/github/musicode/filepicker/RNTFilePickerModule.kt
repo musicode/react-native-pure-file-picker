@@ -94,12 +94,12 @@ class RNTFilePickerModule1(private val reactContext: ReactApplicationContext) : 
                 promise.reject("-1", "cancel")
             }
 
-            override fun onSubmit(activity: Activity, list: List<PickedFile>) {
+            override fun onSubmit(activity: Activity, assetList: List<PickedFile>) {
 
                 activity.finish()
 
                 val map = Arguments.createMap()
-                val (path, name, size) = list[0]
+                val (path, name, size) = assetList[0]
 
                 map.putString("path", path)
                 map.putString("name", name)
