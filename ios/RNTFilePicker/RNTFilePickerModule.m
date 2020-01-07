@@ -50,7 +50,10 @@ RCT_EXPORT_METHOD(open:(RCTPromiseResolveBlock) resolve reject:(RCTPromiseReject
                                    @"com.microsoft.powerpoint.ppt",
                                    @"com.microsoft.word.docx",
                                    @"com.microsoft.excel.xlsx",
-                                   @"com.microsoft.powerpoint.pptx"
+                                   @"com.microsoft.powerpoint.pptx",
+                                   @"org.openxmlformats.wordprocessingml.document",
+                                   @"org.openxmlformats.spreadsheetml.sheet",
+                                   @"org.openxmlformats.presentationml.presentation"
                                ];
 
         self.controller = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:documentTypes inMode:UIDocumentPickerModeImport];
