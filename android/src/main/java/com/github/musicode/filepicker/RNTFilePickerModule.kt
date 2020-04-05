@@ -10,12 +10,17 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.modules.core.PermissionAwareActivity
+import com.github.herokotlin.permission.Permission
 import com.github.herokotlin.filepicker.FilePickerActivity
 import com.github.herokotlin.filepicker.FilePickerCallback
 import com.github.herokotlin.filepicker.FilePickerConfiguration
 import com.github.herokotlin.filepicker.model.PickedFile
 
 class RNTFilePickerModule1(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+
+    companion object {
+        val permission = Permission(19903, listOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE))
+    }
 
     override fun getName(): String {
         return "RNTFilePicker"
@@ -30,8 +35,6 @@ class RNTFilePickerModule1(private val reactContext: ReactApplicationContext) : 
 
     @ReactMethod
     fun open(options: ReadableMap, promise: Promise) {
-
-        val permission = FilePickerActivity.permission
 
         permission.onExternalStorageNotWritable = {
             promise.reject("3", "external storage is not writable")
