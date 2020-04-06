@@ -1,11 +1,11 @@
 
 #import "RNTFilePicker.h"
 
-@interface RNTFilePickerModule()<UIDocumentPickerDelegate>
+@interface RNTFilePicker()<UIDocumentPickerDelegate>
 
 @end
 
-@implementation RNTFilePickerModule
+@implementation RNTFilePicker
 
 - (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url {
 
