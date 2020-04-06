@@ -32,10 +32,16 @@ allprojects {
 ## Usage
 
 ```js
-import FilePicker from 'react-native-pure-file-picker'
+import filePicker from 'react-native-pure-file-picker'
 
-// the first `options` param is just available for android.
-FilePicker.open({
+// At first, make sure you have the permissions.
+// ios: nothing
+// android: WRITE_EXTERNAL_STORAGE
+
+// If you don't have these permissions, you can't call open method.
+
+// The first `options` param is just available for android.
+filePicker.open({
   // optional
   submitButtonTitle: '确定',
   // optional
@@ -49,13 +55,8 @@ FilePicker.open({
 })
 .then(file => {
   let { path, name, size } = file
-
 })
-.catch(error => {
-  let { code } = error
-  // -1: click cancel button
-  // 1: has no permissions
-  // 2: denied the requested permissions
-  // 3: external storage is not writable
+.catch(() => {
+  // click cancel button
 })
 ```

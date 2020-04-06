@@ -1,7 +1,6 @@
 package com.github.musicode.filepicker
 
 import android.app.Activity
-import com.facebook.react.ReactActivity
 
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.Promise
@@ -9,63 +8,19 @@ import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.modules.core.PermissionAwareActivity
-import com.github.herokotlin.permission.Permission
 import com.github.herokotlin.filepicker.FilePickerActivity
 import com.github.herokotlin.filepicker.FilePickerCallback
 import com.github.herokotlin.filepicker.FilePickerConfiguration
 import com.github.herokotlin.filepicker.model.PickedFile
 
-class RNTFilePickerModule1(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
-
-    companion object {
-        private val permission = Permission(19903, listOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE))
-    }
+class RNTFilePickerModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
 
     override fun getName(): String {
         return "RNTFilePicker"
     }
 
-    private var permissionListener = { requestCode: Int, permissions: Array<out String>?, grantResults: IntArray? ->
-        if (permissions != null && grantResults != null) {
-            permission.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        }
-        true
-    }
-
     @ReactMethod
     fun open(options: ReadableMap, promise: Promise) {
-
-        permission.onExternalStorageNotWritable = {
-            promise.reject("3", "external storage is not writable.")
-        }
-
-        permission.onPermissionsDenied = {
-            promise.reject("2", "you denied the requested permissions.")
-        }
-
-        permission.onPermissionsNotGranted = {
-            promise.reject("1", "has no permissions.")
-        }
-
-        permission.onRequestPermissions = { activity, list, requestCode ->
-            if (activity is ReactActivity) {
-                activity.requestPermissions(list, requestCode, permissionListener)
-            }
-            else if (activity is PermissionAwareActivity) {
-                (activity as PermissionAwareActivity).requestPermissions(list, requestCode, permissionListener)
-            }
-        }
-
-        if (permission.checkExternalStorageWritable()) {
-            permission.requestPermissions(currentActivity!!) {
-                openActivity(options, promise)
-            }
-        }
-
-    }
-
-    private fun openActivity(options: ReadableMap, promise: Promise) {
 
         val configuration = object : FilePickerConfiguration() {
 

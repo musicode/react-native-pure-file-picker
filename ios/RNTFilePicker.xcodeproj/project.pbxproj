@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9D5365EF222CCF3F00BE39AE /* RNTFilePickerModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5365EE222CCF3F00BE39AE /* RNTFilePickerModule.m */; };
-		9D5365F0222CCF3F00BE39AE /* RNTFilePickerModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D5365ED222CCF3F00BE39AE /* RNTFilePickerModule.h */; };
+		9D5365EF222CCF3F00BE39AE /* RNTFilePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5365EE222CCF3F00BE39AE /* RNTFilePicker.m */; };
+		9D5365F0222CCF3F00BE39AE /* RNTFilePicker.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D5365ED222CCF3F00BE39AE /* RNTFilePicker.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -18,7 +18,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				9D5365F0222CCF3F00BE39AE /* RNTFilePickerModule.h in CopyFiles */,
+				9D5365F0222CCF3F00BE39AE /* RNTFilePicker.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -26,8 +26,8 @@
 
 /* Begin PBXFileReference section */
 		9D5365EA222CCF3F00BE39AE /* libRNTFilePicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNTFilePicker.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D5365ED222CCF3F00BE39AE /* RNTFilePickerModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTFilePickerModule.h; sourceTree = "<group>"; };
-		9D5365EE222CCF3F00BE39AE /* RNTFilePickerModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTFilePickerModule.m; sourceTree = "<group>"; };
+		9D5365ED222CCF3F00BE39AE /* RNTFilePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTFilePicker.h; sourceTree = "<group>"; };
+		9D5365EE222CCF3F00BE39AE /* RNTFilePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTFilePicker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +60,8 @@
 		9D5365EC222CCF3F00BE39AE /* RNTFilePicker */ = {
 			isa = PBXGroup;
 			children = (
-				9D5365ED222CCF3F00BE39AE /* RNTFilePickerModule.h */,
-				9D5365EE222CCF3F00BE39AE /* RNTFilePickerModule.m */,
+				9D5365ED222CCF3F00BE39AE /* RNTFilePicker.h */,
+				9D5365EE222CCF3F00BE39AE /* RNTFilePicker.m */,
 			);
 			path = RNTFilePicker;
 			sourceTree = "<group>";
@@ -122,7 +122,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D5365EF222CCF3F00BE39AE /* RNTFilePickerModule.m in Sources */,
+				9D5365EF222CCF3F00BE39AE /* RNTFilePicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
