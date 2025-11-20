@@ -71,7 +71,7 @@ class RNTFilePickerModule(private val reactContext: ReactApplicationContext) : R
         FilePickerActivity.configuration = configuration
         FilePickerActivity.callback = callback
 
-        FilePickerActivity.newInstance(currentActivity!!)
+        FilePickerActivity.newInstance(reactContext.currentActivity!!)
 
     }
 
